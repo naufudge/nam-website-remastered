@@ -1,113 +1,118 @@
+'use client';
+
+import Slides from "@/components/slides";
+import { motion } from 'framer-motion';
 import Image from "next/image";
+import NavBar from "@/components/nav";
+import Announcements from "@/components/announcements";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
+const links = {
+  "About": {
+    "About Us": "",
+    "Board Members": "",
+    "Director General": ""
+  },
+  "Media": {
+    "News": "",
+    "Press Release": "",
+    "Event Photo Gallery": "",
+  },
+  "Records": {
+    "Historical Documents": "",
+    "Photo Gallery": "",
+    "Video Gallery": ""
+  },
+  "Announcements": {
+    "Careers": "",
+    "Circular": "",
+    "Iulaan": ""
+  },
+  "Documents": {
+    "Downloads": "",
+    "Forms": "",
+    "Publications": "",
+    "Reports": ""
+  },
+  "Legal": "",
+}
+
+// The following 2 will be used to animate the title of the landing page
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.3
+    }
+  }
+};
+
+const item = {
+  hidden: { y: -50, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1
+  }
+};
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="main">
+      {/* Nav Bar */}
+      <NavBar />
+
+      <div className="my-[70px] h-fit items-center justify-center relative">
+        <Image src="/pics/main pic.png" width={2000} height={2000} alt="logo" className="mx-auto" />
+        <div className="px-[2rem] mx-10 w-[650px] absolute top-24 flex flex-col gap-5">
+          {/* <motion.h1
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          transition={{type: "spring", stiffness: 100}}
+          className="container align-middle text-[4rem] text-white">
+            <motion.span className="item" variants={item}>National </motion.span>
+            <motion.span className="item" variants={item}>Archives </motion.span>
+            <br></br>
+            <motion.span className="item" variants={item}>of </motion.span>
+            <motion.span className="item" variants={item}>Maldives</motion.span>
+          </motion.h1> */}
+          {/* <div className="align-middle text-[4rem] text-white">National Archives of Maldives</div> */}
+          <motion.h1
+          variants={container}
+          initial="hidden"
+          animate="visible"
+          transition={{type: "spring", stiffness: 100}}
+          className="container px-0 align-middle text-[4rem] text-white"
           >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+            <motion.span className="item" variants={item}>National </motion.span>
+            <motion.span className="item" variants={item}>Archives</motion.span>
+            <br />
+            <motion.span className="item" variants={item}>of </motion.span>
+            <motion.span className="item" variants={item}>Maldives</motion.span>
+          </motion.h1>
+
+          <div className="text-white text-lg">A public legal entity established under the Archives Act (16/2011) on 19th January 2012.</div>
+          
+          <Button
+          variant="outline"
+          color="white"
+          className="w-[250px] h-[70px] text-lg drop-shadow justify-between px-5"><Link href={"/"}>Service Request</Link><ArrowRight /></Button>
         </div>
       </div>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
+      <div className="static mx-20">
+        <Announcements />
       </div>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+      <div className="static mx-20">
+          
       </div>
-    </main>
+
+    </div>
   );
 }
