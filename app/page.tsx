@@ -12,10 +12,11 @@ import HistoryToday from "@/components/history-today";
 
 // The following 2 will be used to animate the title of the landing page
 const container = {
-  hidden: { opacity: 1, scale: 0 },
+  hidden: { opacity: 1, scale: 0, blur: 0 },
   visible: {
     opacity: 1,
     scale: 1,
+    blur: 1,
     transition: {
       delayChildren: 0.2,
       staggerChildren: 0.3
@@ -37,9 +38,9 @@ export default function Home() {
       {/* Nav Bar */}
       <NavBar />
 
-      <div className="my-[70px] h-fit items-center justify-center relative">
-        <Image src="/pics/main pic.png" width={2000} height={2000} alt="logo" className="mx-auto" />
-        <div className="px-[2rem] mx-10 w-[650px] absolute top-24 flex flex-col gap-5">
+      <div className="my-[70px] h-fit justify-center relative">
+        <Image src="/pics/main pic.png" width={2000} height={2000} alt="logo" className="mx-auto object-cover h-full" />
+        <div className="pl-20 absolute top-[20%] box-content flex flex-col gap-6">
           <motion.div
           variants={container}
           initial="hidden"
@@ -54,7 +55,7 @@ export default function Home() {
             <motion.span className="item" variants={item}>Maldives</motion.span>
           </motion.div>
 
-          <div className="text-white text-lg">A public legal entity established under the Archives Act (16/2011) on 19th January 2012.</div>
+          <div className="text-white text-lg">A public legal entity established under the Archives Act (16/2011) <br /> on 19th January 2012.</div>
           
           <Button
           variant="outline"
@@ -63,11 +64,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="static mx-20">
+      <div className="static px-20">
         <Announcements />
       </div>
 
-      <div className="static m-20 grid grid-cols-2">
+      <div className="static grid grid-cols-1 gap-6">
           <RecentImages />
           <HistoryToday />
       </div>

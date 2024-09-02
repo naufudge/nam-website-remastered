@@ -11,9 +11,9 @@ import { CalendarDays } from 'lucide-react';
 
 const Announcements = () => {
   return (
-    <div className="my-10">
-        <h1 className="text-center text-2xl font-semibold mb-2">Announcements</h1>
-        <div className="mx-auto w-fit mb-8"><hr className='h-1 w-24 rounded-full bg-blue-900' /></div>
+    <div className="py-10">
+        <h1 className="text-center text-xl font-semibold mb-2">Announcements</h1>
+        <div className="mx-auto w-fit mb-8"><hr className='h-1 w-20 rounded-full bg-blue-900' /></div>
         <div className="grid grid-cols-4 gap-10">
         <Card className="bg-gradient-to-b from-indigo-100 to-transparent drop-shadow-md">
             <CardHeader><CardTitle className="text-xl">Shaheedhunge Dhuvas 2024</CardTitle></CardHeader>
